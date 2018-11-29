@@ -43,12 +43,12 @@ abstract class CoreCallbacks {
             if (($r instanceof Carbon) == FALSE) {
                 throw new \InvalidArgumentException('Array of Carbon object expected');
             }
-            $idx[] = $r->month.$r->day;
+            $idx[] = $r->month.'-'.$r->day;
         }
         
         return function(Carbon $dt) use ($idx) {
             return in_array(
-                $dt->month.$dt->day,
+                $dt->month.'-'.$dt->day,
                 $idx
             );
         };
